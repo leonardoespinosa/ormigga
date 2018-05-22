@@ -1,19 +1,26 @@
 /**
- * UserDetails Model
+ * CurrentUser Model
  */
-export interface UserDetails {
-    _id: string;
-    email: string;
+export interface CurrentUser {
     name: string;
-    exp: number;
-    iat: number;
-}
-
-/**
- * TokenUser Model
- */
-export interface TokenUser {
-    token: string;
+    uuid: string;
+    platform: string;
+    username: string;
+    phone: string;
+    level: number;
+    ddd: string;
+    cid: number;
+    iam: number;
+    plan: string;
+    accessToken: string;
+    apikey: string;
+    privatekey: string;
+    token_user: string;
+    permisos: Object;
+    rol: string;
+    contact: string;
+    ormiggaPro: boolean;
+    user_uuid: string;
 }
 
 /**

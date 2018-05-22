@@ -16,7 +16,11 @@ module.exports.login = function (req, res) {
         if (!result) {
             res.send(JSON.stringify({ status: -4 }));
         } else {
-            res.send(JSON.stringify(result));
+            if (result.data.usr.status == 0) {
+                res.send(JSON.stringify({ 'status': 0, 'user': result.data.usr.username, 'tokenActivate': result.data.usr.tokenActivate }));
+            } else {
+                res.send(JSON.stringify(result));
+            }
         }
     });
 }
@@ -30,7 +34,6 @@ async function validateUserLogin(req, _userDecode) {
     try {
         let user = await getUser(req, _userDecode.data.username);
 
-        // Si el usuario esta bloqueado devuelve -3
         if (user.status < 0) {
             return JSON.stringify({ error: 'invalid credentials' });
         }
@@ -40,15 +43,17 @@ async function validateUserLogin(req, _userDecode) {
             date: new Date().toISOString()
         }, config.secret);
 
-        if (user.bloqueo || user.status == 6) {
-            return false;
+        if (user.bloqueo) {
+            return JSON.stringify({ status: -3 });
+        } else if (user.status == 6) {
+            return JSON.stringify({ status: -1 });
         } else if (user.status != 2) {
-            // Si no devuelve error de login
             return false;
         } else {
             let resultAct = rethinkdb.table('users')
                 .filter({ username: _userDecode.data.username })
                 .update({ tokenAccess: _accessToken }).run(req._rdbConn);
+            //.update({ tokenAccess: _accessToken, multisession: rethinkdb.row['multisession'].default([]).append(_accessToken) }).run(req._rdbConn);
         }
 
         if (user.password === utils.encrypt(_userDecode.data.password)) {
@@ -81,8 +86,9 @@ async function validateUserLogin(req, _userDecode) {
                 createTrace(req, dataRSP);
             }
             return dataRSP;
+        } else {
+            return JSON.stringify({ status: -2 });
         }
-        return JSON.stringify({ status: -3 });
     } catch (e) {
         return false;
     }
