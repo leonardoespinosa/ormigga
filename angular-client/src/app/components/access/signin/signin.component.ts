@@ -28,7 +28,7 @@ export class SigninComponent implements OnInit, OnDestroy {
     ngOnInit() {
         let _currentUser: CurrentUser = this._accessService.getCurrentUser();
         if (_currentUser) {
-            console.log(_currentUser);
+            this._router.navigate(['portal/view-proposals']);
         }
         this._signinForm = new FormGroup({
             email: new FormControl('', [Validators.required, Validators.minLength(6), CustomValidators.emailValidator]),
@@ -74,6 +74,7 @@ export class SigninComponent implements OnInit, OnDestroy {
                 } else {
                     //$state.go('access.signin', {}, { reload: true, location: true });
                 }
+                this._router.navigate(['portal/view-proposals']);
             }
         }, (err) => {
             console.error(err);
