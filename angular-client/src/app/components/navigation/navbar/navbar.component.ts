@@ -9,7 +9,7 @@ import { CurrentUser } from '../../../models/access/access.model';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-    private _currentUser: CurrentUser;
+    _currentUser: CurrentUser;
 
     constructor(private _accessService: AccessService) { }
 

@@ -12,7 +12,7 @@ import { User, UserData, CurrentUser } from '../../../models/access/access.model
 })
 export class SigninComponent implements OnInit, OnDestroy {
 
-    private _signinForm: FormGroup;
+    _signinForm: FormGroup;
 
     /**
      * SigninComponent Constructor
