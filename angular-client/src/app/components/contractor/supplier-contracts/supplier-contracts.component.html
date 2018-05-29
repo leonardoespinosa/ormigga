@@ -91,20 +91,13 @@
                                     <tbody>
                                         <tr *ngFor="let item of _arrayItems | async">
                                             <td class="p-a-sm">
-                                                <!--div *ngIf="item.createBy == 'Contratante'">
-                                                    <textarea class="form-control" name="descriptionItem" id="descriptionItem" rows="3" [(ngModel)]="item.description"></textarea>
-                                                </div-->
                                                 <div *ngIf="item.createBy == 'Contratante'">
                                                     <textarea class="form-control" name="descriptionItem" id="descriptionItem" rows="3">{{item.description}}</textarea>
                                                 </div>
                                                 <div *ngIf="item.createBy != 'Contratante'">
-                                                    <input type="text" name="description" class="form-control" min-length="5">
-                                                    {{item.description}}
+                                                    <input type="text" name="description" class="form-control" min-length="5" value="{{item.description}}"> 
                                                 </div>
                                             </td>
-                                            <!--td class="p-a-sm text-center">
-                                                {{item.quantity | currency: "" : 0}}
-                                            </td-->
                                             <td class="p-a-sm text-center">
                                                 {{item.quantity}}
                                             </td>
