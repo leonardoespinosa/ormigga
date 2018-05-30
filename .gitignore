@@ -34,3 +34,39 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+/ormiggaapp/*~
+/ormiggaapp/*.sw[mnpcod]
+/ormiggaapp/*.log
+/ormiggaapp/*.tmp
+/ormiggaapp/*.tmp.*
+/ormiggaapp/log.txt
+/ormiggaapp/*.sublime-project
+/ormiggaapp/*.sublime-workspace
+/ormiggaapp/.vscode/
+/ormiggaapp/npm-debug.log*
+
+/ormiggaapp/.idea/
+/ormiggaapp/.sourcemaps/
+/ormiggaapp/.sass-cache/
+/ormiggaapp/.tmp/
+/ormiggaapp/.versions/
+/ormiggaapp/coverage/
+/ormiggaapp/dist/
+/ormiggaapp/node_modules/
+/ormiggaapp/tmp/
+/ormiggaapp/temp/
+/ormiggaapp/hooks/
+/ormiggaapp/platforms/
+/ormiggaapp/plugins/
+/ormiggaapp/plugins/android.json
+/ormiggaapp/plugins/ios.json
+/ormiggaapp/www/
+/ormiggaapp/$RECYCLE.BIN/
+
+/ormiggaapp/.DS_Store
+/ormiggaapp/Thumbs.db
+/ormiggaapp/UserInterfaceState.xcuserstate
